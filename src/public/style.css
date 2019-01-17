@@ -1,4 +1,44 @@
  /* single global CSS */
- #loginPageMainDiv {
+
+
+ /* Employees View */
+ #employeesViewMainDiv {
      margin-top: 20px;
+ }
+
+ #employeesViewDeleteAll {
+     position: relative;
+     left: 84%;
+     bottom: 31px;
+     color: #fff;
+     background-color: #e95bbe;
+     border-color: #e95bbe;
+ }
+
+ /* Login View */
+ #loginViewMainContainer {
+     position: relative;
+     top: 30px;
+ }
+
+ #loginViewTitle {
+     position: relative;
+     bottom: 5px;
+     left: 1.5%;
+ }
+
+ #loginViewLoginBtn {
+     width: 100%;
+     position: absolute;
+ }
+
+ #loginViewInputName {
+     left: 127px;
+     width: 100%;
+     position: absolute;
+ }
+
+ #logivViewMsgHelp {
+     position: relative;
+     top: 40px;
  }

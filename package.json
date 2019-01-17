@@ -2,7 +2,7 @@
   "name": "company",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "start": "cls && node src/server.js"
   },

@@ -1,0 +1,19 @@
+<!doctype html>
+<div class="container" id="loginViewMainContainer">
+    <div class="row">
+        <h1 id="loginViewTitle">Login page</h1>
+    </div>
+    <div id="mainRowLoginView" class="row">
+        <div class="col-md-2">
+            <button id="loginViewLoginBtn" type="button" class="btn btn-success" ng-click="login(name)" ng-disabled="!name">Login</button>
+        </div>
+        <div class="col-md-3">
+            <input id="loginViewInputName" type="text" class="form-control" placeholder="Employee name" ng-model="name">
+        </div>
+    </div>
+    <div class="row" id="logivViewMsgHelp">
+        <div class="col-md-4" ng-hide="name">
+            Please enter your name.
+        </div>
+    </div>
+</div>

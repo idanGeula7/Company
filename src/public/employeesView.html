@@ -1,0 +1,21 @@
+<!doctype html>
+<div class="container" id="employeesViewMainDiv">
+    <h2>Hoverable Dark Table</h2>
+    <p>Hi M. {{employeeName}}, you are {{employeeStatus}}</p>
+    <button id="employeesViewDeleteAll" type="button" class="btn" ng-click="deleteAllEmployees()">Delete all</button>
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employeesArray">
+                <td>{{employee.name}}</td>
+                <td>{{employee.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-info" ng-click="logoff()">Log off</button>
+</div>
