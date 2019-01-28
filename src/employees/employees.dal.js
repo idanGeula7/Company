@@ -4,6 +4,7 @@ const mongoose = require("../dbManager").mongoose;
 const Employee = mongoose.model("Employee", employeeSchema);
 
 // Create (on login)
+// returns the created employee
 const create = (name) => {
     return new Promise((resolve, reject) => {
         let newEmployee = new Employee({
@@ -11,11 +12,15 @@ const create = (name) => {
             GUID: Math.floor(Math.random() * 100000)
         });
 
-        newEmployee.save((error) => {
+        newEmployee.save((error, createdEmployee) => {
             if (error) {
                 return reject(new Error(error));
             }
-            resolve();
+            resolve({
+                name: createdEmployee.name,
+                GUID: createdEmployee.GUID,
+                status: createdEmployee.status
+            });
         });
     });
 };
@@ -38,9 +43,27 @@ const getAll = () => {
     });
 };
 
-// Read one (on login)
-// (get status if exists (by sending name), "-1" otherwise)
-const getStatusFromEmployeeName = (name) => {
+const getOne = (guid) => {
+    return new Promise((resolve, reject) => {
+        Employee.find({
+            GUID: guid
+        }, (error, result) => {
+            if (error) {
+                reject(new Error(error));
+            } else {
+                if (result.length > 0) {
+                    resolve(result[0]);
+                } else {
+                    reject(new Error(`getOneByName function failed. Employee GUID ${guid} doesn't exist`));
+                }
+            }
+        });
+    });
+};
+
+// Gets GUID from employee name.
+// Returns -1 if it doesn't exist.
+const getGuid = (name) => {
     return new Promise((resolve, reject) => {
         Employee.find({
             name: name
@@ -49,7 +72,7 @@ const getStatusFromEmployeeName = (name) => {
                 reject(new Error(error));
             } else {
                 if (result.length > 0) {
-                    resolve(result[0].status);
+                    resolve(result[0].GUID);
                 } else {
                     resolve(-1);
                 }
@@ -69,10 +92,25 @@ const deleteAll = () => {
     });
 };
 
-const deleteOne = (GUID) => {
+const deleteOne = (guid) => {
     return new Promise((resolve, reject) => {
         Employee.deleteOne({
-            "GUID": GUID
+            GUID: guid
+        }, (error) => {
+            if (error) {
+                return reject(new Error(error));
+            }
+            resolve();
+        });
+    });
+};
+
+const updateOne = (guidForUpdate, newStatus) => {
+    return new Promise((resolve, reject) => {
+        Employee.findOneAndUpdate({
+            GUID: guidForUpdate
+        }, {
+            status: newStatus
         }, (error) => {
             if (error) {
                 return reject(new Error(error));
@@ -84,12 +122,12 @@ const deleteOne = (GUID) => {
 
 
 
-// Update (for setting status)
-
 module.exports = {
     create,
     getAll,
-    getStatusFromEmployeeName,
+    getOne,
+    getGuid,
     deleteAll,
-    deleteOne
+    deleteOne,
+    updateOne
 };

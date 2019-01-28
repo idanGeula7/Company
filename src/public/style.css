@@ -6,14 +6,29 @@
      margin-top: 20px;
  }
 
+ #employeesViewStatusComboBox {
+     position: relative;
+     right: -44%;
+     bottom: 13px;
+ }
+
  #employeesViewDeleteAll {
      position: relative;
      left: 84%;
-     bottom: 31px;
+     bottom: 14px;
      color: #fff;
      background-color: #e95bbe;
      border-color: #e95bbe;
  }
+
+ .employeesViewDeleteOne {
+     position: relative;
+     left: 64%;
+     color: #fff;
+     background-color: #423e3e;
+     border-color: #e95bbe;
+ }
+
 
  /* Login View */
  #loginViewMainContainer {
@@ -38,7 +53,7 @@
      position: absolute;
  }
 
- #logivViewMsgHelp {
+ #loginViewMsgHelp {
      position: relative;
      top: 40px;
  }

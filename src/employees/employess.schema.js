@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const config = require("../config");
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
 
 const employeeSchema = new Schema({
     GUID: {

@@ -1,8 +1,17 @@
 <!doctype html>
 <div class="container" id="employeesViewMainDiv">
     <h2>Hoverable Dark Table</h2>
-    <p>Hi M. {{employeeName}}, you are {{employeeStatus}}</p>
+    <p>Hi M. {{currentEmployee.name}}, you are {{currentEmployee.status}}. Your guid is {{currentEmployee.GUID}}</p>
     <button id="employeesViewDeleteAll" type="button" class="btn" ng-click="deleteAllEmployees()">Delete all</button>
+    <div class="btn-group" id="employeesViewStatusComboBox">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Set status
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" ng-repeat="status in statusesArray" ng-click="updateStatus(status)">{{status}}</a>
+        </div>
+    </div>
     <table class="table table-dark table-hover">
         <thead>
             <tr>
@@ -14,6 +23,7 @@
             <tr ng-repeat="employee in employeesArray">
                 <td>{{employee.name}}</td>
                 <td>{{employee.status}}</td>
+                <td> <button class="employeesViewDeleteOne" type="button" ng-click="deleteEmployee(employee.GUID)">Delete</button></td>
             </tr>
         </tbody>
     </table>
