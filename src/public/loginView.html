@@ -8,7 +8,8 @@
             <button id="loginViewLoginBtn" type="button" class="btn btn-success" ng-click="login(name)" ng-disabled="!name">Login</button>
         </div>
         <div class="col-md-3">
-            <input id="loginViewInputName" type="text" class="form-control" placeholder="Employee name" ng-model="name">
+            <input id="loginViewInputName" type="text" class="form-control" placeholder="Employee name" ng-model="name"
+                ng-init="name='Idan'">
         </div>
     </div>
     <div class="row" id="loginViewMsgHelp">
