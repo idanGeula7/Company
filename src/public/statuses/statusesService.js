@@ -1,5 +1,5 @@
+"use strict";
 angular.module("companyApp").factory("statusesService", ["$http", "$q", ($http, $q) => {
-    // -----------------------------------------------------------change to service instead of factory
     return {
         getAll: () => {
             // the $http API is based on the deferred/promise APIs exposed by the $q service

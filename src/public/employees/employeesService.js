@@ -1,3 +1,4 @@
+"use strict";
 angular.module("companyApp").factory("employeesService", ["$http", "$q", ($http, $q) => {
     return {
         getAll: () => {

@@ -12,14 +12,15 @@ app.config(($routeProvider) => {
 });
 
 
-app.controller("employeesCtrl", ["$scope", "$http", "$location", "statusesService", "employeesService",
-    ($scope, $http, $location, statusesService, employeesService) => {
+app.controller("employeesCtrl", ["$scope", "$location", "statusesService", "employeesService", "workerService",
+    ($scope, $location, statusesService, employeesService, workerService) => {
 
         $scope.init = () => {
             $scope.employeesArray = [];
             $scope.statusesArray = [];
             $scope.currentEmployee = {};
             getStatusList();
+            workerService.start();
         };
 
         let getStatusList = () => {
